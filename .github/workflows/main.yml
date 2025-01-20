@@ -1,8 +1,8 @@
 name: deploy vps
 on:
-  - push:
-      branches:
-        - main
+  push:
+    branches:
+      - main
 jobs:
   name: build
   runs-on: ubuntu-latest
