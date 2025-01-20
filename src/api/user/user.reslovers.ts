@@ -13,13 +13,15 @@ import { NewUserInput } from './dto/new-user.input';
 import { UpdateUserInput } from './dto/update-user.input';
 import { PostService } from '../post/post.service';
 import { Post } from '../post/model/post.model';
-import { forwardRef, Inject } from '@nestjs/common';
+import { Profile } from '../profile/model/profile.model';
+import { ProfileService } from '../profile/profile.service';
 
 @Resolver(() => User)
 export class UserResolver {
   constructor(
     private readonly userService: UserService,
     private readonly postService: PostService,
+    private readonly profileService: ProfileService,
   ) {}
 
   @Query(() => User)
@@ -55,5 +57,10 @@ export class UserResolver {
   @ResolveField('posts', () => [Post])
   async getPosts(@Parent() user: User): Promise<Post[]> {
     return await this.postService.findPostById(user.id);
+  }
+
+  @ResolveField('profile', () => Profile)
+  async getProfile(@Parent() user: User): Promise<Profile> {
+    return await this.profileService.getProfile(user.id);
   }
 }

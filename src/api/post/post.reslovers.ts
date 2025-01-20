@@ -12,7 +12,6 @@ import { PostArgs } from './dto/posts.args';
 import { NewPostInput } from './dto/new-post.input';
 import { User } from '../user/model/user.model';
 import { UserService } from '../user/user.service';
-import { forwardRef, Inject } from '@nestjs/common';
 
 @Resolver(() => Post)
 export class PostReslovers {
