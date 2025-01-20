@@ -36,6 +36,7 @@ jobs:
             docker login -u "${{secrets.DOCKERHUB_USERNAME}}" -p "${{secrets.DOCKERHUB_PASSWORD}}"
             docker pull hoangday185/graphql-nest:v0
             docker rm -f dev_nest_graphql
-            docker network connect graphql_network dev_nest_graphql
             docker container run -dp 6969:3000 --name dev_nest_graphql hoangday185/graphql-nest:v0
+            docker network connect graphql_network dev_nest_graphql
+            docker restart dev_nest_graphql
             docker image prune -f
