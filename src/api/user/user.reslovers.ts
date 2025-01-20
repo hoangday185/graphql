@@ -13,6 +13,7 @@ import { NewUserInput } from './dto/new-user.input';
 import { UpdateUserInput } from './dto/update-user.input';
 import { PostService } from '../post/post.service';
 import { Post } from '../post/model/post.model';
+import { forwardRef, Inject } from '@nestjs/common';
 
 @Resolver(() => User)
 export class UserResolver {
