@@ -9,13 +9,6 @@ export class ProfileReslover {
   constructor(private readonly profile: ProfileService) {}
 
   @Mutation(() => Profile)
-  async createProfile(
-    @Args('newProfileInput') data: NewProfileInput,
-  ): Promise<Profile> {
-    return await this.profile.createProfile(data);
-  }
-
-  @Mutation(() => Profile)
   async updateProfile(
     @Args('id') id: string,
     @Args('updateProfileInput') data: UpdateProfileInput,
