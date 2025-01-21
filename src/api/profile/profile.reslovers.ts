@@ -10,9 +10,9 @@ export class ProfileReslover {
 
   @Mutation(() => Profile)
   async updateProfile(
-    @Args('id') id: string,
+    @Args('userid') userId: string,
     @Args('updateProfileInput') data: UpdateProfileInput,
   ): Promise<Profile> {
-    return await this.profile.updateProfile(id, data);
+    return await this.profile.updateProfile(userId, data);
   }
 }
