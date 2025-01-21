@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/database/prisma.service';
 import { NewPostInput } from './dto/new-post.input';
+import { UpdatePostInput } from './dto/update-post.input';
 
 @Injectable()
 export class PostService {
@@ -26,5 +27,20 @@ export class PostService {
     return await this.prisma.post.findMany({
       where: { authorId: id },
     });
+  }
+
+  async update(id: string, input: UpdatePostInput) {
+    return await this.prisma.post.update({
+      where: { id },
+      data: input,
+    });
+  }
+
+  async delete(id: string) {
+    return Boolean(
+      await this.prisma.post.delete({
+        where: { id },
+      }),
+    );
   }
 }

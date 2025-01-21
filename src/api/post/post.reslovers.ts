@@ -41,4 +41,17 @@ export class PostReslovers {
   async author(@Parent() post: Post): Promise<User> {
     return await this.userService.findAuthor(post.authorId);
   }
+
+  @Mutation(() => Post)
+  async updatePost(
+    @Args('postId') postId: string,
+    @Args('newPostInput') newPostInput: NewPostInput,
+  ): Promise<Post> {
+    return await this.postService.update(postId, newPostInput);
+  }
+
+  @Mutation(() => Boolean)
+  async deletePost(@Args('postId') postId: string): Promise<boolean> {
+    return await this.postService.delete(postId);
+  }
 }
