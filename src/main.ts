@@ -8,7 +8,8 @@ async function bootstrap() {
   const corsOption = {
     origin: '*',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    preflightContinue: false,
+    credentials: true, //access-control-allow-credentials:true
+    optionSuccessStatus: 200,
   };
   app.enableCors(corsOption);
   const config = new DocumentBuilder()
