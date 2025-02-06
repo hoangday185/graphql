@@ -10,6 +10,7 @@ async function bootstrap() {
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true, //access-control-allow-credentials:true
     optionSuccessStatus: 200,
+    allowedHeaders: ['Content-Type', 'Authorization'],
   };
   app.enableCors(corsOption);
   const config = new DocumentBuilder()
