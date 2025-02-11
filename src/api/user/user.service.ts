@@ -62,6 +62,7 @@ export class UserService {
     );
   }
 
+  // find auhtor by id
   async findAuthor(id: string) {
     return await this.prisma.user.findUnique({
       where: { id },
